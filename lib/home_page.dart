@@ -30,19 +30,15 @@ class _HomePageState extends State<HomePage> {
       floatingActionButton: _buildFloatingButton(),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       body: Padding(
-        padding: const EdgeInsets.all(20),
-        child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const Text("Mazome", style: TextStyle(fontSize: 24)),
-              const SizedBox(height: 20),
-              CustomText(valor: valorInicial),
-              CustomText(valor: valorInicial * 2),
-              CustomText(valor: valorInicial * 3),
-              CustomText(valor: valorInicial * 12),
-            ]),
-      ),
+          padding: const EdgeInsets.all(20),
+          child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Text("Mazome", style: TextStyle(fontSize: 24)),
+                const SizedBox(height: 20),
+                CustomText(valor: valorInicial)
+              ])),
     );
   }
 }
