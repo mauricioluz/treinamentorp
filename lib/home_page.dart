@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:treinamentorp/widgets/buttons/custom_elevated_button.dart';
 import 'widgets/listtile/custom_list_tile.dart';
 
 class HomePage extends StatefulWidget {
@@ -50,7 +51,7 @@ class _HomePageState extends State<HomePage> {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text("Mazome", style: TextStyle(fontSize: 24)),
+                Text(valorInicial.toString(), style: TextStyle(fontSize: 24)),
                 const SizedBox(height: 20),
                 SizedBox(
                   height: 62,
@@ -62,11 +63,22 @@ class _HomePageState extends State<HomePage> {
                       }),
                 ),
                 const SizedBox(height: 20),
+                CustomElevatedButton(
+                    text: "Fazer algo",
+                    icon: Icons.check,
+                    onPressed: () {
+                      setState(() {
+                        valorInicial = Random().nextInt(100);
+                      });
+                    }),
+                const SizedBox(height: 20),
                 Expanded(
                   child: ListView.builder(
                       itemCount: nomes.length,
                       itemBuilder: (_, index) {
+                        //Pegando o objeto no índice atual
                         var valor = nomes[index];
+                        //Valido se o objeto é um Map
                         if (valor is Map) {
                           valor = "${valor["nome"]} - ${valor["sobrenome"]}";
                         }
