@@ -1,7 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:treinamentorp/custom_text.dart';
+import 'widgets/listtile/custom_list_tile.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -12,6 +12,21 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int valorInicial = 10;
+
+  List numeros = [10, 11, 43, 24, 69, 71, 121, 32, 32, 34];
+  List nomes = [
+    "Mauricião",
+    "Danilão",
+    1,
+    {"nome": "Sei lá", "sobrenome": "tchau"},
+    "Vilmarzão",
+    "China",
+    "Mazzettão",
+    "Mendigão",
+    "Personal",
+    "Mão no volante",
+    "Mão no carinho",
+  ];
 
   _buildFloatingButton() => FloatingActionButton(
       backgroundColor: Colors.red,
@@ -37,7 +52,27 @@ class _HomePageState extends State<HomePage> {
               children: [
                 const Text("Mazome", style: TextStyle(fontSize: 24)),
                 const SizedBox(height: 20),
-                CustomText(valor: valorInicial)
+                SizedBox(
+                  height: 62,
+                  child: ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      itemCount: numeros.length,
+                      itemBuilder: (BuildContext _, int index) {
+                        return CustomListTile(valor: numeros.elementAt(index));
+                      }),
+                ),
+                const SizedBox(height: 20),
+                Expanded(
+                  child: ListView.builder(
+                      itemCount: nomes.length,
+                      itemBuilder: (_, index) {
+                        var valor = nomes[index];
+                        if (valor is Map) {
+                          valor = "${valor["nome"]} - ${valor["sobrenome"]}";
+                        }
+                        return Text(valor.toString());
+                      }),
+                )
               ])),
     );
   }
