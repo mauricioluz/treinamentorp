@@ -26,7 +26,7 @@ class _HomePageState extends State<HomePage> {
             const SizedBox(height: 20),
             CustomElevatedButton(
                 text: "Começar",
-                onPressed: () {
+                onPressed: () async {
                   Navigator.push(context,
                       MaterialPageRoute(builder: (_) => CharactersPage()));
                 })
