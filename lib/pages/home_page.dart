@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:treinamentorp/pages/cameras_page.dart';
 import 'package:treinamentorp/pages/characters_page.dart';
 import 'package:treinamentorp/widgets/appbar/custom_app_bar.dart';
 import 'package:treinamentorp/widgets/buttons/custom_elevated_button.dart';
@@ -14,7 +15,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(title: "Treinamento RP"),
+      appBar: const CustomAppBar(title: "Treinamento RP"),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -27,8 +28,10 @@ class _HomePageState extends State<HomePage> {
             CustomElevatedButton(
                 text: "Começar",
                 onPressed: () async {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (_) => CharactersPage()));
+                  await Navigator.pushNamed(context, "/characters");
+
+                  ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(content: Text("Voltei home")));
                 })
           ],
         ),

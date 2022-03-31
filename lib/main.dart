@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:treinamentorp/pages/characters_page.dart';
 import 'package:treinamentorp/pages/home_page.dart';
 
 void main() {
@@ -16,7 +17,23 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const HomePage(),
+      initialRoute: "/",
+      onGenerateRoute: (settings) {
+        Widget page = const SizedBox();
+
+        switch (settings.name) {
+          case "/":
+            page = const HomePage();
+            break;
+          case "/characters":
+            page = const CharactersPage();
+            break;
+        }
+
+        return PageRouteBuilder(
+            pageBuilder: (_, __, ___) => page,
+            transitionDuration: const Duration(milliseconds: 300));
+      },
     );
   }
 }
