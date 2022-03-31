@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:treinamentorp/models/character.dart';
 import 'package:treinamentorp/pages/characters_page.dart';
 import 'package:treinamentorp/pages/home_page.dart';
+import 'package:treinamentorp/pages/single_character_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -27,6 +29,10 @@ class MyApp extends StatelessWidget {
             break;
           case "/characters":
             page = const CharactersPage();
+            break;
+          case "/character_page":
+            page =
+                SingleCharacterPage(character: settings.arguments as Character);
             break;
         }
 
